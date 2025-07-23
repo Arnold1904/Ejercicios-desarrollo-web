@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="icon" href="favicon_io/favicon.ico">
 </head>
-<body>
+<body class="bg-secondary">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <image class="navbar-brand" src="favicon_io/favicon.ico">MiLogo</a>
@@ -37,23 +37,22 @@
                     <div class="card-header text-center">    
                         <h1>Conversor Binario a Decimal</h1>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-bg-dark">
                         <div class="mb-3">
                             <label for="binaryInput" class="form-label">Número Binario:</label>
                             <input type="text" class="form-control" id="binaryInput" placeholder="0" readonly>
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
-                            <button class="btn btn-info btn-lg" id="btn0" onclick="agregardigito('0')" value="0">0</button> 
-                            <button class="btn btn-info btn-lg" id="btn1" onclick="agregardigito('1')" value="1">1</button>
+                            <button class="btn btn-secondary btn-lg" id="btn0" onclick="agregardigito('0')" value="0">0</button> 
+                            <button class="btn btn-secondary btn-lg" id="btn1" onclick="agregardigito('1')" value="1">1</button>
                         </div>
                         
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-between mb-4">
+                        <div class="d-grid gap-2 d-md-flex  mb-4">
                             <button id="clearBtn" class="btn btn-warning" onclick="limpiar()">Limpiar</button>
-                            <button id="deleteBtn" class="btn btn-secondary" onclick="borrar()"><i class="bi bi-backspace"></i> Borrar</button>
+                            <button id="deleteBtn" class="btn btn-danger" onclick="borrar()"><i class="bi bi-backspace"></i> Borrar</button>
+                            <button id="convertBtn" class="btn btn-success w-100 btn-lg" onclick="convertir()">Convertir</button>
                         </div>
-                        
-                        <button id="convertBtn" class="btn btn-primary w-100 btn-lg" onclick="convertir()">Convertir</button>
                         
                         <div id="conversionResult" class="mt-4 alert" role="alert" style="display: none;"></div>
                     </div>
@@ -64,6 +63,7 @@
 <footer id="footer" class="footer bg-dark">
     <strong> &copy; Desarrollo hecho por Arnold Mesa 2025</strong>
 </footer>
-    <script src="js/logica.js"></script>
+<script src="js/logica.js"></script>
+
 </body>
 </html>
