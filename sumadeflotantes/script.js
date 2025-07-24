@@ -158,43 +158,79 @@ function displayResults(sum) {
 }
 
 // Función para convertir números a palabras en español
+// Función para convertir números a palabras en español (CORREGIDA)
 function numberToWords(num) {
-    const ones = ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'];
+    const ones = ['', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'];
     const teens = ['diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve'];
     const tens = ['', '', 'veinte', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
     const hundreds = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
+
+    // Función auxiliar para convertir números menores a 1000
+    function convert(n) {
+        if (n === 0) return '';
+        if (n < 10) return ones[n];
+        if (n < 20) return teens[n - 10];
+        if (n < 100) {
+            const ten = Math.floor(n / 10);
+            const one = n % 10;
+            // Manejo especial para 'veintiun', 'veintidos', etc.
+            if (ten === 2 && one > 0) return `veinti${ones[one]}`;
+            return tens[ten] + (one > 0 ? ` y ${ones[one]}` : '');
+        }
+        if (n < 1000) {
+            const hundred = Math.floor(n / 100);
+            const remainder = n % 100;
+            if (n === 100) return 'cien';
+            // Usa el auxiliar 'convert' para el resto del número
+            return hundreds[hundred] + (remainder > 0 ? ` ${convert(remainder)}` : '');
+        }
+        return '';
+    }
     
     if (num === 0) return 'cero';
-    
-    let result = '';
-    
+
     // Separar parte entera y decimal
-    const parts = num.toString().split('.');
-    const integerPart = parseInt(parts[0]);
-    const decimalPart = parts[1] || '';
-    
-    // Convertir parte entera
+    const parts = num.toFixed(2).toString().split('.');
+    let integerPart = parseInt(parts[0]);
+    const decimalPart = parseInt(parts[1]);
+
+    let result = '';
+
+    // Millones
     if (integerPart >= 1000000) {
         const millions = Math.floor(integerPart / 1000000);
-        result += convertHundreds(millions) + (millions === 1 ? ' millón ' : ' millones ');
-        const remainder = integerPart % 1000000;
-        if (remainder > 0) {
-            result += convertHundreds(remainder);
-        }
-    } else if (integerPart >= 1000) {
-        const thousands = Math.floor(integerPart / 1000);
-        if (thousands === 1) {
-            result += 'mil ';
-        } else {
-            result += convertHundreds(thousands) + ' mil ';
-        }
-        const remainder = integerPart % 1000;
-        if (remainder > 0) {
-            result += convertHundreds(remainder);
-        }
-    } else {
-        result += convertHundreds(integerPart);
+        // Ajuste para "un millón" en lugar de "uno millón"
+        result += (millions === 1 ? 'un millón' : `${convert(millions)} millones`);
+        integerPart %= 1000000;
+        if (integerPart > 0) result += ' ';
     }
+
+    // Miles
+    if (integerPart >= 1000) {
+        const thousands = Math.floor(integerPart / 1000);
+        // Ajuste para "mil" en lugar de "un mil"
+        if (thousands > 1) {
+            result += `${convert(thousands)} mil`;
+        } else {
+            result += 'mil';
+        }
+        integerPart %= 1000;
+        if (integerPart > 0) result += ' ';
+    }
+
+    // Cientos, decenas y unidades
+    if (integerPart > 0) {
+        result += convert(integerPart);
+    }
+    
+    // Parte decimal (mejorada)
+    if (decimalPart > 0) {
+        result += ` con ${convert(decimalPart)} centavos`;
+    }
+
+    // Capitalizar la primera letra y devolver
+    return (result.charAt(0).toUpperCase() + result.slice(1)).trim();
+
     
     // Agregar parte decimal si existe
     if (decimalPart) {

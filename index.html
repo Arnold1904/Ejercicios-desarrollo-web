@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor Binario a Decimal</title>
+    <title>Home page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="binario/css/estilos.css">
     <link rel="icon" href="favicon_io/favicon.ico">
+
 </head>
 <body class="bg-secondary">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <image class="navbar-brand" src="favicon_io/favicon.ico">MiLogo</a>
+            <image class="navbar-brand" src="binario/favicon_io/favicon.ico"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,10 +22,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Binario a Decimal</a>
+                        <a class="nav-link" href="/binario/binario.html">Binario a Decimal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/sumadeflotantes/sumflot.html">Suma de flotantes</a>
@@ -33,39 +34,39 @@
             </div>
         </div>
     </nav>
+    <div class="display-2 text-light">
+        <h1 class="text-center mt-5">Bienvenido a mi pagina personal aqui estare subiendo los proyectos realizados de Desarrollo Web</h1>
+    </div>
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow">
-                    <div class="card-header text-center">    
-                        <h1>Conversor Binario a Decimal</h1>
-                    </div>
-                    <div class="card-body text-bg-dark">
-                        <div class="mb-3">
-                            <label for="binaryInput" class="form-label">Número Binario:</label>
-                            <input type="text" class="form-control" id="binaryInput" placeholder="0" readonly>
-                        </div>
-
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
-                            <button class="btn btn-secondary btn-lg" id="btn0" onclick="agregardigito('0')" value="0">0</button> 
-                            <button class="btn btn-secondary btn-lg" id="btn1" onclick="agregardigito('1')" value="1">1</button>
-                        </div>
-                        
-                        <div class="d-grid gap-2 d-md-flex  mb-4">
-                            <button id="clearBtn" class="btn btn-warning" onclick="limpiar()">Limpiar</button>
-                            <button id="deleteBtn" class="btn btn-danger" onclick="borrar()"><i class="bi bi-backspace"></i> Borrar</button>
-                            <button id="convertBtn" class="btn btn-success w-100 btn-lg" onclick="convertir()">Convertir</button>
-                        </div>
-                        
-                        <div id="conversionResult" class="mt-4 alert" role="alert" style="display: none;"></div>
-                    </div>
+        <div class="row justify-content-center g-4">
+            <!-- Tarjeta 1 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card bg-dark text-bg-dark">
+                <img src="binario/favicon_io/favicon.ico" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Binario a Decimal</h5>
+                <p class="card-text">En este ejercicio podrás convertir un número binario a decimal.</p>
+                <a href="binario/binario.html" class="btn btn-primary">¡Vamos!</a>
                 </div>
+            </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card bg-dark text-bg-dark">
+                <img src="sumadeflotantes/fav.ico" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Suma de flotantes</h5>
+                <p class="card-text">Aquí podrás sumar números flotantes con reglas específicas y una suma interactiva.</p>
+                <a href="sumadeflotantes/sumflot.html" class="btn btn-primary">¡Vamos!</a>
+                </div>
+            </div>
             </div>
         </div>
     </div>
-<footer id="footer" class="footer bg-dark">
-    <strong> &copy; Desarrollo hecho por Arnold Mesa 2025</strong>
-</footer>
+    <footer id="footer" class="footer bg-dark">
+        <strong> &copy; Desarrollo hecho por Arnold Mesa 2025</strong>
+    </footer>
 <script src="js/logica.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
