@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Impostor</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="Styles/estilos.css">
+</head>
+<body>
+    <div id="inicio" class="container mt-5 text-center">
+        <h1>Juego del Impostor</h1>
+        <p>Selecciona el número de jugadores:</p>
+        <div class="btn-group" role="group" aria-label="Seleccionar jugadores">
+            <button class="btn btn-primary" onclick="iniciarJuego(3)">3 Jugadores</button>
+            <button class="btn btn-primary" onclick="iniciarJuego(4)">4 Jugadores</button>
+            <button class="btn btn-primary" onclick="iniciarJuego(5)">5 Jugadores</button>
+            <button class="btn btn-primary" onclick="iniciarJuego(6)">6 Jugadores</button>
+            <button class="btn btn-primary" onclick="iniciarJuego(7)">7 Jugadores</button>
+            <button class="btn btn-primary" onclick="iniciarJuego(8)">8 Jugadores</button>
+        </div>
+    </div>
+
+    <div id="juego" class="container mt-5 text-center" style="display: none;">
+        <h2 id="turno">Turno de:</h2>
+        <div class="flip-card mx-auto" onclick="manejarFlipCard()">
+            <div class="flip-card-inner">
+                <div class="flip-card-front d-flex align-items-center justify-content-center">
+                    <h3>Click aquí</h3>
+                </div>
+                <div class="flip-card-back d-flex align-items-center justify-content-center">
+                    <h3 id="mensaje"></h3>
+                </div>
+            </div>
+        </div>
+        <button id="siguiente" class="btn btn-success mt-3" onclick="siguienteJugador()">Siguiente Jugador</button>
+        <button id="finalizar" class="btn btn-danger mt-3" style="display: none;" onclick="finalizarRonda()">Finalizar Ronda</button>
+    </div>
+
+    <!-- Modal de Bootstrap -->
+    <div class="modal fade" id="resultadoModal" tabindex="-1" aria-labelledby="resultadoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultadoModalLabel">Resultado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Mensaje dinámico -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Funciones/script.js"></script>
+    <!-- Enlace a Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
